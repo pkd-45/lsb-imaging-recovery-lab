@@ -1,13 +1,10 @@
 # lsb-imaging-recovery-lab
 
-**Release 0.3.2:** formatting-only local-gate repair for the exact Ruff 0.16.7 I001 findings reported on macOS; scientific logic and stored reference products are unchanged from 0.3.0.
-
-
 A compact, auditable benchmark for a specific astronomical-imaging question:
 
 > **When does a segmentation of faint tidal structure remain useful for downstream stream characterisation once PSF, sky, subtraction, crowding and contaminants change?**
 
-This repository is a **methods demonstrator**, not a reproduction of the Cambridge LE50980 research programme and not a real-survey performance claim. It was designed after reading the public research trail around Miles Cranmer, Vasily Belokurov, Elisabeth Sola and the current Cambridge astronomical-imaging work rather than from the job title alone.
+This repository is a **methods demonstrator**, not a real-survey performance claim. It is motivated by public work on residual-image tidal-feature discovery, contaminant-aware low-surface-brightness segmentation, robust scientific machine learning, and stream-track inference.
 
 
 ## Headline result
@@ -16,11 +13,30 @@ This repository is a **methods demonstrator**, not a reproduction of the Cambrid
 
 The left-hand panels show one controlled synthetic stream through the full recovery problem: the observed image, the host-subtracted residual, the known tidal truth, and the model's recovered tidal probability. The right-hand panel asks the question that matters most for the project: **does that recovery survive when the observing conditions change?**
 
-In the committed CPU quick reference, the fixed original/model/residual triplet reaches a tidal F1 of **0.423**, compared with **0.289** for the classical residual-threshold baseline, while mean stream-track completeness is **0.813**. The benchmark also shows where the method breaks down: under strong cirrus contamination, tidal F1 falls to **0.376 of its nominal value**.
+The left-hand panels use one committed deterministic reference example to make the recovery problem visible. The right-hand panel reports the **five-seed CPU quick mean ± standard deviation** for each observational or nuisance shift, so the robustness result is not inferred from a single training seed.
 
-Residual-only input happens to score slightly higher than the fixed triplet in this smoke run (0.442 versus 0.423). I keep the triplet as the declared primary because that choice was made before looking at the test result rather than selecting whichever representation happened to win afterwards.
+The original/model/residual triplet remains the declared primary representation because that choice was fixed before test evaluation. The seed sweep is used to judge whether small triplet-versus-residual differences are stable rather than interpreting a single-seed gap.
 
 The main point is therefore not that this compact U-Net is production-ready. It is that low-surface-brightness recovery should be tested for **recoverability and failure under observational shift**, and that the validation should continue into the downstream stream geometry used for science.
+
+
+## Five-seed quick stability check
+
+To avoid reading too much into one short training run, I repeated the same quick
+benchmark for **5 CPU seeds**. These remain synthetic, smoke-scale
+experiments rather than survey-performance estimates.
+
+- fixed triplet tidal F1: **0.374 ± 0.064**;
+- residual-only tidal F1: **0.360 ± 0.066**;
+- classical residual baseline tidal F1: **0.261 ± 0.018**;
+- triplet minus residual-only F1: **0.014 ± 0.105**;
+- stream-track completeness: **0.649 ± 0.145**;
+- strong-cirrus F1 relative to nominal: **0.462 ± 0.074**.
+
+I therefore interpret the triplet-versus-residual comparison from its seed-to-seed
+spread rather than from the 0.019 difference in the committed reference seed. Full
+per-seed values are in
+[`products/seed_sweep/summary.json`](products/seed_sweep/summary.json).
 
 ## Why this benchmark is shaped this way
 
@@ -34,7 +50,7 @@ The public Cambridge work points to an end-to-end problem, not merely a binary s
 6. **decide whether that geometry is good enough for physical inference**;
 7. **build the workflow as scalable, testable scientific software**.
 
-The strongest public clues are summarized in [`docs/LITERATURE_NOTES.md`](docs/LITERATURE_NOTES.md) and mapped to implementation choices in [`docs/CAMBRIDGE_ALIGNMENT.md`](docs/CAMBRIDGE_ALIGNMENT.md).
+The strongest public clues are summarized in [`docs/RESEARCH_CONTEXT.md`](docs/RESEARCH_CONTEXT.md) and mapped to implementation choices in [`docs/DESIGN_RATIONALE.md`](docs/DESIGN_RATIONALE.md).
 
 ## What is implemented
 

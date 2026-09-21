@@ -1,6 +1,6 @@
-# Cambridge LE50980 alignment matrix
+# Design rationale and traceability
 
-This is a design traceability document, not a claim that the Cambridge team uses this exact implementation.
+This document maps public scientific and software-motivated design requirements to the corresponding benchmark components. It does not claim that any external group uses this exact implementation.
 
 | Public role / research signal | Repository response | What it demonstrates |
 |---|---|---|
@@ -9,11 +9,11 @@ This is a design traceability document, not a claim that the Cambridge team uses
 | Residual-image workflow in STRRINGS | original/model/residual channels and ablation | source-model subtraction is part of the experiment |
 | Cirrus/artefact confusion in Richards et al. | nuisance segmentation head + nuisance FPR/cross-talk | contaminants are first-class labels |
 | Simulation/generative approaches | transparent synthetic forward model | exact truth and controlled interventions |
-| Cranmer robust-SBI emphasis | domain-shift suite + no transfer claim | training-domain performance is not assumed to generalise |
+| Robust simulation-based inference literature | domain-shift suite + no transfer claim | training-domain performance is not assumed to generalise |
 | GaMPEN uncertainty/calibration | Brier/ECE + MC-dropout error diagnostic | separates calibration from point performance |
-| Cambridge Project 37 invariances | D4, dimming, PSF and resampling tests | tests observation-induced transformations |
+| Invariance under observational transformations | D4, dimming, PSF and resampling tests | tests observation-induced transformations |
 | STRRINGS track extraction | angular/radial track-recovery diagnostic | asks whether a segmentation is useful downstream |
-| Chemaly/Sola halo-shape inference | synthetic usable-track gate | makes the segmentation→physics interface explicit |
+| Stream-track physical inference | synthetic usable-track gate | makes the segmentation→physics interface explicit |
 | GPU/HPC / benchmarking | device-aware PyTorch + throughput script | performance is measured, not asserted |
 | Git/GitHub/testing/open software | package structure, pytest, CI, output validator | inspectable research software |
 

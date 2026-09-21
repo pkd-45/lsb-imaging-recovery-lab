@@ -2,15 +2,11 @@
 
 This document records the **public** material used to decide what belongs in this repository. It distinguishes published/public work from inference about the advertised post. It is not intended to imply access to unpublished Cambridge plans.
 
-## 1. The post itself: LE50980
+## 1. Scientific context
 
-The Cambridge advert asks for two Research Associates working with **Miles Cranmer** and **Vasily Belokurov** on machine learning for wide-field astronomical imaging. The stated topics are low-surface-brightness detection and characterisation, source detection, deblending, generative/simulation-based methods, survey-scale data and ML infrastructure, GPU/HPC deployment, and open-source software.
+The benchmark is motivated by public work on low-surface-brightness tidal features, contaminant-aware segmentation, robust simulation-trained inference, astronomical image invariance, and the use of recovered stream geometry for downstream physical inference.
 
-The detailed person specification additionally names Git/GitHub, code benchmarking/performance evaluation, HPC parallelisation, ML/AI, Python or C++, automated testing, software dependencies/build systems and profiling/optimization.
-
-Official advert: https://www.damtp.cam.ac.uk/job/56951
-
-## 2. Vasily Belokurov: this is a longer-running LSB+ML programme
+## 2. Low-surface-brightness discovery with machine learning
 
 The most important point missed in the first scan is that Belokurov was PI of the 2021 Leverhulme Research Project Grant **“The Faint Universe Made Visible with Machine Learning”** (RPG-2021-205). A Cambridge postdoc funded under that grant explicitly sought expertise spanning galaxy dynamics, numerical galaxy-formation simulations, machine learning/computational statistics, spectroscopy, wide-field surveys and large datasets.
 
@@ -78,9 +74,9 @@ Sources:
 
 This is the strongest reason not to optimize only segmentation F1. For the scientific programme, **a visually plausible mask can still be useless or biased for downstream inference**.
 
-## 8. Cranmer: robust scientific ML, uncertainty, scale and software
+## 8. Robust scientific ML, uncertainty, scale and software
 
-Several Cranmer strands matter to the advertised role:
+Several strands of public scientific-ML work motivate the validation design:
 
 ### Robust simulation-based inference
 Lemos et al. (2023), with Cranmer, show that simulation-trained inference can become biased and overconfident under training-to-real distribution shift and study Bayesian-neural-network mitigation.
@@ -104,7 +100,7 @@ https://arxiv.org/abs/1708.00720
 
 Together, these argue for **distribution-shift tests, reliability diagnostics, machine-readable evaluation and throughput measurement**, not simply a notebook that trains a neural network.
 
-## 9. Current Cambridge imaging direction: invariance and continuous representations
+## 9. Invariance and continuous astronomical representations
 
 The 2025–26 Cambridge IoA Project 37, supervised by Belokurov, Sola and Koposov, asks for **invariant similarity metrics for galaxy images** and explicitly lists rotation, parity flips, cosmological dimming, pixel resampling and PSF changes as nuisance transformations unrelated to intrinsic morphology. It proposes rigorous benchmarking at Rubin/Euclid scale.
 
