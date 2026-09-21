@@ -9,6 +9,19 @@ A compact, auditable benchmark for a specific astronomical-imaging question:
 
 This repository is a **methods demonstrator**, not a reproduction of the Cambridge LE50980 research programme and not a real-survey performance claim. It was designed after reading the public research trail around Miles Cranmer, Vasily Belokurov, Elisabeth Sola and the current Cambridge astronomical-imaging work rather than from the job title alone.
 
+
+## Headline result
+
+![Faint tidal-structure recoverability under observational and nuisance shift](products/reference/hero_figure.png)
+
+The left-hand panels show one controlled synthetic stream through the full recovery problem: the observed image, the host-subtracted residual, the known tidal truth, and the model's recovered tidal probability. The right-hand panel asks the question that matters most for the project: **does that recovery survive when the observing conditions change?**
+
+In the committed CPU quick reference, the fixed original/model/residual triplet reaches a tidal F1 of **0.423**, compared with **0.289** for the classical residual-threshold baseline, while mean stream-track completeness is **0.813**. The benchmark also shows where the method breaks down: under strong cirrus contamination, tidal F1 falls to **0.376 of its nominal value**.
+
+Residual-only input happens to score slightly higher than the fixed triplet in this smoke run (0.442 versus 0.423). I keep the triplet as the declared primary because that choice was made before looking at the test result rather than selecting whichever representation happened to win afterwards.
+
+The main point is therefore not that this compact U-Net is production-ready. It is that low-surface-brightness recovery should be tested for **recoverability and failure under observational shift**, and that the validation should continue into the downstream stream geometry used for science.
+
 ## Why this benchmark is shaped this way
 
 The public Cambridge work points to an end-to-end problem, not merely a binary segmentation task:
