@@ -1,0 +1,11 @@
+name: lsb-imaging-recovery
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy>=1.26,<3
+  - scipy>=1.11,<2
+  - matplotlib>=3.8,<4
+  - pytorch>=2.2,<3
+  - pytest>=8,<9
+  - ruff>=0.6,<1

@@ -1,0 +1,283 @@
+{
+  "scope": "controlled synthetic methods benchmark; not a real-survey performance claim and not a reproduction of the Cambridge pipeline",
+  "version": "0.3.0",
+  "scientific_question": "when does a tidal-feature segmentation remain useful for downstream stream characterisation under nuisance, deblending and observational shift?",
+  "n_train": 192,
+  "n_val": 48,
+  "n_test": 60,
+  "epochs_per_ablation": 4,
+  "device": "cpu",
+  "primary_mode": "triplet",
+  "primary_choice_policy": "fixed before test evaluation; original+model+residual triplet",
+  "threshold_by_mode": {
+    "original": {
+      "tidal": 0.6499999999999999,
+      "nuisance": 0.4
+    },
+    "residual": {
+      "tidal": 0.7999999999999999,
+      "nuisance": 0.55
+    },
+    "triplet": {
+      "tidal": 0.85,
+      "nuisance": 0.6
+    }
+  },
+  "input_ablation": {
+    "original": {
+      "iou": 0.1568728990852451,
+      "precision": 0.17829546701981108,
+      "recall": 0.5259792851730909,
+      "f1": 0.2613367150819845,
+      "nuisance_iou": 0.3309119037401459,
+      "nuisance_precision": 0.3553874259187267,
+      "nuisance_recall": 0.8240281107792266,
+      "nuisance_f1": 0.49498856209377845,
+      "nuisance_false_positive_rate": 0.16884279512862524,
+      "companion_leakage_rate": 0.7922889892323723,
+      "head_cross_talk_rate": 0.5780407945973323
+    },
+    "residual": {
+      "iou": 0.30052444657623545,
+      "precision": 0.41781369818773917,
+      "recall": 0.5165268498385311,
+      "f1": 0.4421794934375614,
+      "nuisance_iou": 0.45406991045321754,
+      "nuisance_precision": 0.5524383195554373,
+      "nuisance_recall": 0.7188733208131384,
+      "nuisance_f1": 0.6216886166166277,
+      "nuisance_false_positive_rate": 0.09980913129402226,
+      "companion_leakage_rate": 0.01667245571378951,
+      "head_cross_talk_rate": 0.4947921075197181
+    },
+    "triplet": {
+      "iou": 0.2793732498613331,
+      "precision": 0.31531688298822896,
+      "recall": 0.7089695538226525,
+      "f1": 0.4227742637266284,
+      "nuisance_iou": 0.42654652167870516,
+      "nuisance_precision": 0.5611154264529418,
+      "nuisance_recall": 0.6374888814197971,
+      "nuisance_f1": 0.5932334781413136,
+      "nuisance_false_positive_rate": 0.20463490025843284,
+      "companion_leakage_rate": 0.08579367836054186,
+      "head_cross_talk_rate": 0.5571746841378302
+    }
+  },
+  "training_loss": {
+    "original": [
+      0.9938735167185465,
+      0.9665451794862747,
+      0.9505252887805303,
+      0.9311745464801788
+    ],
+    "residual": [
+      1.0150018533070881,
+      0.9806970606247584,
+      0.8789142866929373,
+      0.8134371936321259
+    ],
+    "triplet": [
+      1.0136957118908565,
+      0.9953569819529852,
+      0.9220593372980753,
+      0.8146725197633108
+    ]
+  },
+  "classical_residual_baseline": {
+    "iou": 0.17245720552639957,
+    "precision": 0.17847605555972917,
+    "recall": 0.8143032784757207,
+    "f1": 0.28884458971635874,
+    "nuisance_false_positive_rate": 0.44735908653277706,
+    "companion_leakage_rate": 0.10211879124696074
+  },
+  "primary_characterisation": {
+    "area_ratio": 2.503206900634987,
+    "area_fractional_error": 1.5032069006349869,
+    "radial_extent_ratio": 1.4968203636195687,
+    "radial_extent_fractional_error": 0.5203915733256183
+  },
+  "primary_stream_track": {
+    "n_streams": 26.0,
+    "track_completeness": 0.812611213572752,
+    "track_radial_mae_fraction": 0.09070501285750773,
+    "usable_fraction": 0.6153846153846154
+  },
+  "primary_tidal_calibration": {
+    "brier": 0.2642617039630996,
+    "ece": 0.43643319484160925,
+    "candidate_fraction": 0.69569091796875
+  },
+  "primary_d4_mean_probability_disagreement": {
+    "tidal": 0.013435986824333668,
+    "nuisance": 0.015431717038154602
+  },
+  "primary_mc_dropout_diagnostic": {
+    "error_auc": 0.4370324827302984,
+    "mean_std_error": 0.0674559697508812,
+    "mean_std_correct": 0.07462670654058456,
+    "error_to_correct_std_ratio": 0.9039119221239694
+  },
+  "domain_shift": {
+    "nominal": {
+      "iou": 0.214170102383375,
+      "precision": 0.26662512981452857,
+      "recall": 0.5827438159888677,
+      "f1": 0.3359658599235556,
+      "nuisance_iou": 0.41273207239169113,
+      "nuisance_precision": 0.5468187929507614,
+      "nuisance_recall": 0.6258330706102864,
+      "nuisance_f1": 0.5802374480923564,
+      "nuisance_false_positive_rate": 0.20004157139887757,
+      "companion_leakage_rate": 0.03873873873873874,
+      "head_cross_talk_rate": 0.5200951351418179,
+      "relative_f1": 1.0
+    },
+    "broader_psf": {
+      "iou": 0.18187459977151102,
+      "precision": 0.22956313230545708,
+      "recall": 0.5010907089886422,
+      "f1": 0.2895755853360941,
+      "nuisance_iou": 0.41254035850633825,
+      "nuisance_precision": 0.5497532865746395,
+      "nuisance_recall": 0.6228491475370584,
+      "nuisance_f1": 0.5801671647735923,
+      "nuisance_false_positive_rate": 0.20004157139887757,
+      "companion_leakage_rate": 0.03783783783783784,
+      "head_cross_talk_rate": 0.48312694018105795,
+      "relative_f1": 0.8619196766063761
+    },
+    "higher_noise": {
+      "iou": 0.21891793368828816,
+      "precision": 0.37384979255222267,
+      "recall": 0.325591956598572,
+      "f1": 0.3212085776057397,
+      "nuisance_iou": 0.35068244538581744,
+      "nuisance_precision": 0.5726261100140502,
+      "nuisance_recall": 0.47809093063053737,
+      "nuisance_f1": 0.5145393429081083,
+      "nuisance_false_positive_rate": 0.05678653086676367,
+      "companion_leakage_rate": 0.0018018018018018018,
+      "head_cross_talk_rate": 0.38320532656514555,
+      "relative_f1": 0.9560750538129864
+    },
+    "sky_gradient": {
+      "iou": 0.1488657657938973,
+      "precision": 0.16837499348053164,
+      "recall": 0.5005857686153464,
+      "f1": 0.2431893813528246,
+      "nuisance_iou": 0.3086650205139816,
+      "nuisance_precision": 0.42050532689734577,
+      "nuisance_recall": 0.5272996741486046,
+      "nuisance_f1": 0.46580494411308243,
+      "nuisance_false_positive_rate": 0.22876740802328,
+      "companion_leakage_rate": 0.03963963963963964,
+      "head_cross_talk_rate": 0.4623803995919787,
+      "relative_f1": 0.7238514693372684
+    },
+    "strong_cirrus": {
+      "iou": 0.07101397085585918,
+      "precision": 0.07946066347326718,
+      "recall": 0.3424399264623059,
+      "f1": 0.12633051319599764,
+      "nuisance_iou": 0.46878064875843917,
+      "nuisance_precision": 0.5738078164045936,
+      "nuisance_recall": 0.720899831665453,
+      "nuisance_f1": 0.6367210060618788,
+      "nuisance_false_positive_rate": 0.4757430887549366,
+      "companion_leakage_rate": 0.04504504504504504,
+      "head_cross_talk_rate": 0.5016055385947339,
+      "relative_f1": 0.37602187682028887
+    },
+    "strong_ghosts": {
+      "iou": 0.17718593477512137,
+      "precision": 0.20285166460685686,
+      "recall": 0.5886032131073299,
+      "f1": 0.28824748357122293,
+      "nuisance_iou": 0.47951472957621855,
+      "nuisance_precision": 0.602135498569647,
+      "nuisance_recall": 0.7017777979644934,
+      "nuisance_f1": 0.6444289586715772,
+      "nuisance_false_positive_rate": 0.2845977967158595,
+      "companion_leakage_rate": 0.11711711711711711,
+      "head_cross_talk_rate": 0.549362095383952,
+      "relative_f1": 0.8579665911197336
+    },
+    "dimmer_features": {
+      "iou": 0.13326439882498528,
+      "precision": 0.16505193898450535,
+      "recall": 0.3505106877517605,
+      "f1": 0.21779000870865872,
+      "nuisance_iou": 0.42424925769054544,
+      "nuisance_precision": 0.5611787732185047,
+      "nuisance_recall": 0.6357849647432564,
+      "nuisance_f1": 0.592046436640573,
+      "nuisance_false_positive_rate": 0.20889627935980046,
+      "companion_leakage_rate": 0.036936936936936934,
+      "head_cross_talk_rate": 0.4202267435625933,
+      "relative_f1": 0.6482504167483382
+    },
+    "coarse_resampling": {
+      "iou": 0.13645820044519774,
+      "precision": 0.14626552839713583,
+      "recall": 0.6963935942500324,
+      "f1": 0.23334247886231252,
+      "nuisance_iou": 0.41004808283240735,
+      "nuisance_precision": 0.49775790942811504,
+      "nuisance_recall": 0.6952249895014893,
+      "nuisance_f1": 0.5785457501821488,
+      "nuisance_false_positive_rate": 0.3678732653402441,
+      "companion_leakage_rate": 0.16149635036496351,
+      "head_cross_talk_rate": 0.6225179475490148,
+      "relative_f1": 0.6945422338906887
+    },
+    "subtraction_mismatch": {
+      "iou": 0.21069389809193306,
+      "precision": 0.2556782155750421,
+      "recall": 0.5632615418136498,
+      "f1": 0.330044918223121,
+      "nuisance_iou": 0.40599527966617277,
+      "nuisance_precision": 0.550142654309084,
+      "nuisance_recall": 0.607583819575759,
+      "nuisance_f1": 0.5737534301170691,
+      "nuisance_false_positive_rate": 0.18029515693203077,
+      "companion_leakage_rate": 0.036036036036036036,
+      "head_cross_talk_rate": 0.49968909023801045,
+      "relative_f1": 0.98237635900927
+    },
+    "crowded_deblend": {
+      "iou": 0.21212702170697054,
+      "precision": 0.2594070569994322,
+      "recall": 0.573340464254862,
+      "f1": 0.32988609795793844,
+      "nuisance_iou": 0.4070173778146436,
+      "nuisance_precision": 0.5435846084835169,
+      "nuisance_recall": 0.6192638608438769,
+      "nuisance_f1": 0.5750509002168637,
+      "nuisance_false_positive_rate": 0.18470647098065376,
+      "companion_leakage_rate": 0.14632034632034632,
+      "head_cross_talk_rate": 0.5087460045946819,
+      "relative_f1": 0.9819036316160203
+    },
+    "unseen_satellite_trail": {
+      "iou": 0.19728171322673194,
+      "precision": 0.23119846393079266,
+      "recall": 0.5918118257209247,
+      "f1": 0.3151068666641332,
+      "nuisance_iou": 0.4395779735336846,
+      "nuisance_precision": 0.6079849758371259,
+      "nuisance_recall": 0.6157163325490836,
+      "nuisance_f1": 0.6079412058282325,
+      "nuisance_false_positive_rate": 0.2080894881102304,
+      "companion_leakage_rate": 0.07747747747747748,
+      "head_cross_talk_rate": 0.5028463419246225,
+      "relative_f1": 0.9379133544575969
+    }
+  },
+  "feature_kind_counts": {
+    "stream": 26,
+    "shell": 20,
+    "tail": 14
+  }
+}

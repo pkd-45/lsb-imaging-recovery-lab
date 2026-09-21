@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  conda-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          cache-environment: true
+      - name: Expose local source tree
+        shell: bash -el {0}
+        run: echo "PYTHONPATH=$PWD/src" >> "$GITHUB_ENV"
+      - name: Lint
+        shell: bash -el {0}
+        run: ruff check .
+      - name: Compile
+        shell: bash -el {0}
+        run: python -m compileall -q src tests scripts
+      - name: Tests
+        shell: bash -el {0}
+        run: pytest -q
+      - name: End-to-end quick benchmark
+        shell: bash -el {0}
+        run: |
+          python scripts/run_demo.py --quick --device cpu --output-dir validation_runs/ci
+          python scripts/validate_outputs.py validation_runs/ci
+          python scripts/benchmark.py \
+            --model validation_runs/ci/primary_model.pt \
+            --output validation_runs/ci/benchmark.json \
+            --device cpu --n 64

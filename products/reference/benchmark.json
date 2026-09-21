@@ -1,0 +1,18 @@
+{
+  "device": "cpu",
+  "input_mode": "triplet",
+  "n_images": 64,
+  "image_shape": [
+    3,
+    64,
+    64
+  ],
+  "model_parameters": 29474,
+  "simulation_images_per_second": 565.2119066022102,
+  "preprocess_images_per_second": 257734.03494913908,
+  "inference_images_per_second": 1862.1833051986403,
+  "simulation_seconds": 0.11323186799927498,
+  "preprocess_seconds": 0.0002483179996488616,
+  "inference_seconds": 0.03436825999961002,
+  "note": "Local microbenchmark only; not a cross-hardware performance claim."
+}
